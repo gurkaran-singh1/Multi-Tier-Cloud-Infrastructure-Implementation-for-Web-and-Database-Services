@@ -50,65 +50,65 @@ By the end of this project, the entire system will be tested for seamless connec
 
 Here’s an ordered list of the goals, from start to finish, to guide the project flow effectively:
 
-1. **Configure a Custom DNS Server on Windows Server (WS-15):** 
-   - Set up WS-15 as the primary DNS for the project environment.
+**Configure a Custom DNS Server on Windows Server (WS-15):** 
+Set up WS-15 as the primary DNS for the project environment.
 
-2. **Update VM DNS Settings to Use Custom DNS Server:**
-   - Configure all VMs to automatically use WS-15 as the primary DNS.
+**Update VM DNS Settings to Use Custom DNS Server:**
+Configure all VMs to automatically use WS-15 as the primary DNS.
 
-3. **Install IIS on Windows Server (WS-15):**
-   - Install the IIS role and create a custom landing page that includes your name and student ID.
+**Install IIS on Windows Server (WS-15):**
+Install the IIS role and create a custom landing page that includes your name and student ID.
 
-4. **Install and Configure FTP Server on Windows Server:**
-   - Set up FTP on WS-15 with a custom data port range (50000-51000) and create two users with specified access levels.
+**Install and Configure FTP Server on Windows Server:**
+Set up FTP on WS-15 with a custom data port range (50000-51000) and create two users with specified access levels.
 
-5. **Configure DNS Forward Lookup Zone on Windows Server:**
-   - In DNS Manager, create a forward lookup zone named "CSP451.com" and define A records for each VM.
+**Configure DNS Forward Lookup Zone on Windows Server:**
+In DNS Manager, create a forward lookup zone named "CSP451.com" and define A records for each VM.
 
-6. **Set DNS Forwarder to 8.8.8.8 on Windows Server:**
-   - Configure WS-15 to forward requests for non-local domains to 8.8.8.8.
+**Set DNS Forwarder to 8.8.8.8 on Windows Server:**
+Configure WS-15 to forward requests for non-local domains to 8.8.8.8.
 
-7. **Install Apache on Linux Server (LS-15):**
-   - Install and configure Apache on LS-15, adding a personalized default webpage.
+**Install Apache on Linux Server (LS-15):**
+Install and configure Apache on LS-15, adding a personalized default webpage.
 
-8. **Install MariaDB on Linux Server (LS-15):**
-   - Install MariaDB, create a read-only user, and verify database connectivity.
+**Install MariaDB on Linux Server (LS-15):**
+Install MariaDB, create a read-only user, and verify database connectivity.
 
-9. **Set Static Private IPs for All VMs:**
-   - Ensure all VMs have static IP assignments to maintain consistent network connectivity.
+**Set Static Private IPs for All VMs:**
+Ensure all VMs have static IP assignments to maintain consistent network connectivity.
 
-10. **Disable Default Azure DNS Configurations on VMs:**
-   - Remove any default DNS settings to ensure all traffic uses WS-15 as the DNS server.
+**Disable Default Azure DNS Configurations on VMs:**
+Remove any default DNS settings to ensure all traffic uses WS-15 as the DNS server.
 
-11. **Update VNET DNS Settings to Point to WS-15:**
-   - Configure the DNS settings on all VNETs to use WS-15 as the primary DNS server.
+**Update VNET DNS Settings to Point to WS-15:**
+Configure the DNS settings on all VNETs to use WS-15 as the primary DNS server.
 
-12. **Develop Basic iptables Firewall Rules on Linux Server (LS-15):**
-   - Configure iptables to allow traffic only for installed services (Apache and MariaDB) on LS-15.
+**Develop Basic iptables Firewall Rules on Linux Server (LS-15):**
+Configure iptables to allow traffic only for installed services (Apache and MariaDB) on LS-15.
 
-13. **Create Basic Connectivity Script on Router VM:**
-   - Set up a basic iptables connectivity script on the Router VM to allow essential traffic between Client and Server networks.
+**Create Basic Connectivity Script on Router VM:**
+Set up a basic iptables connectivity script on the Router VM to allow essential traffic between Client and Server networks.
 
-14. **Add Service-Specific iptables Rules on Router VM:**
-   - Define iptables rules on the Router VM to filter and route specific service traffic (DNS, MySQL, Apache, IIS, FTP) between networks.
+**Add Service-Specific iptables Rules on Router VM:**
+Define iptables rules on the Router VM to filter and route specific service traffic (DNS, MySQL, Apache, IIS, FTP) between networks.
 
-15. **Test Firewall Rules Before Persisting on Router VM:**
-   - Ensure that all iptables rules work as expected on the Router before making them persistent.
+**Test Firewall Rules Before Persisting on Router VM:**
+Ensure that all iptables rules work as expected on the Router before making them persistent.
 
-16. **Test Basic SSH and RDP Connectivity on Firewall (Router VM):**
-   - Verify SSH and RDP access from the Desktop Client to LS-15 and WS-15.
+**Test Basic SSH and RDP Connectivity on Firewall (Router VM):**
+Verify SSH and RDP access from the Desktop Client to LS-15 and WS-15.
 
-17. **Verify HTTP and MySQL Traffic Routing from Client to Linux Server:**
-   - Test HTTP and MySQL traffic flow from the Desktop Client to LS-15 using FQDN.
+**Verify HTTP and MySQL Traffic Routing from Client to Linux Server:**
+Test HTTP and MySQL traffic flow from the Desktop Client to LS-15 using FQDN.
 
-18. **Test HTTP, DNS, and FTP Traffic Routing from Client to Windows Server:**
-   - Confirm that HTTP, DNS, and FTP traffic flows correctly from the Desktop Client to WS-15 using FQDN.
+**Test HTTP, DNS, and FTP Traffic Routing from Client to Windows Server:**
+Confirm that HTTP, DNS, and FTP traffic flows correctly from the Desktop Client to WS-15 using FQDN.
 
-19. **Monitor Packet and Byte Counts on iptables Rules (Router and Linux Server):**
-   - Verify traffic handling by checking packet and byte counts on iptables FORWARD rules in the Router and INPUT rules in LS-15.
+**Monitor Packet and Byte Counts on iptables Rules (Router and Linux Server):**
+Verify traffic handling by checking packet and byte counts on iptables FORWARD rules in the Router and INPUT rules in LS-15.
 
-20. **Confirm Internet Access for All VMs:**
-   - Test that each VM can access external resources (e.g., downloading files) to validate internet connectivity and DNS settings.
+**Confirm Internet Access for All VMs:**
+Test that each VM can access external resources (e.g., downloading files) to validate internet connectivity and DNS settings.
 
 Following this order will help build each component gradually, test connections and configurations along the way, and ensure the setup aligns with the milestone’s objectives.
 
