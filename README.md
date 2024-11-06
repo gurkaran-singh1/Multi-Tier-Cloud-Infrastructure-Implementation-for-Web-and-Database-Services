@@ -2,7 +2,7 @@
 
 ---
 
-## Introduction
+## 1. Introduction
 
 This project focuses on designing and configuring a **robust virtual network environment** that demonstrates the integration of multiple servers and services across a secure and controlled network. The primary goal is to build an interconnected system that uses a custom DNS server to manage network traffic and enable seamless communication between Windows and Linux servers. By setting up essential web, database, and file transfer services, along with carefully configured iptables firewalls, this project simulates a practical IT infrastructure with a focus on network security, traffic filtering, and service accessibility.
 
@@ -46,7 +46,7 @@ By the end of this project, the entire system will be tested for seamless connec
 
 ---
 
-## Project Objectives
+## 2. Project Objectives
 
 Here’s an ordered list of the goals, from start to finish, to guide the project flow effectively:
 
@@ -114,7 +114,29 @@ Following this order will help build each component gradually, test connections 
 
 ---
 
-## Project Overview
+## 4. Testing and Validation
+
+### 4.1 Service Connectivity Testing
+- Test the connectivity between the Desktop Client and each server (Windows Server WS-15, Linux Server LS-15) using their Fully Qualified Domain Names (FQDN).
+- Ensure that HTTP traffic can reach the Apache web server on LS-15 and the IIS server on WS-15.
+- Verify FTP service connectivity between the client and WS-15 by using the FTP client and connecting to the server with the configured port range (50000:51000).
+- Check if the MariaDB service on LS-15 is accessible from the client and other servers.
+
+### 4.2 Firewall Rule Validation
+- Validate that iptables rules on the router (LR-15) allow the correct traffic (HTTP, FTP, MySQL) between the client and the servers.
+- Confirm that firewall rules on both WS-15 and LS-15 permit access to the respective services (IIS, Apache, MariaDB, FTP).
+- Use tools like `iptables -L` to list and verify the active firewall rules.
+- Test if the correct ports are open and traffic is being routed as expected by monitoring packet counts.
+
+### 4.3 Internet Access Verification
+- Ensure that all VMs (WS-15, LS-15, WC-15, and LR-15) have internet access.
+- Check if the DNS server is correctly forwarding queries to external servers, allowing VMs to access websites.
+- Test internet connectivity on each VM by pinging an external server (e.g., `ping 8.8.8.8`).
+- Verify that all VMs can download files from external HTTP servers and ensure proper network routing is in place for outbound traffic.
+
+---
+
+## 5. Project Overview
 
 This project involves configuring a custom DNS server and deploying essential services such as web, FTP, and database on both Windows and Linux servers. It also includes setting up iptables firewall rules to manage traffic between the servers and clients. The goal is to ensure secure and reliable access to services across a controlled network environment. Key tasks include configuring DNS, web, FTP, and database services, along with enforcing security through firewall configurations. The project demonstrates skills in server setup, networking, and traffic management.
 
